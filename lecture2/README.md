@@ -1,17 +1,24 @@
-# Lecture 2 — Automate HTML and README
+# Lecture 2 | GitHub Workflow Automation
 
-This folder follows the submitted UTS Lecture 2 practical activities:
+## Objective
 
-1. Set up a YAML workflow in `.github/workflows/lecture2.yml`
-2. Update the HTML page based on the GitHub actor
-3. Add a README log entry with the actor, timestamp and commit
-4. Commit and push those changes from GitHub Actions
-5. Verify the workflow via the Actions tab
+Configure a GitHub Actions workflow that updates an HTML page and records changes in a README.
 
-The workflow runs on pushes affecting this folder or the workflow itself, and can be manually triggered. The CI runner uses its built-in GitHub token with minimal `contents: write` permission; **do not paste personal access tokens or other credentials in files**.
+## Implementation
 
-## Update history
+- **Workflow:** `.github/workflows/lecture2.yml`
+- **Script:** `lecture2/update.py`
+- **Output:** `lecture2/index.html` and this README
 
-- Updated by apskalana on 2026-10-26 14:59:14 UTC (trigger commit: 25d765b69309)
+The workflow runs on relevant pushes or by manual dispatch. It checks out the repository, executes the update script, verifies the HTML changes and commits the generated files.
 
-- Updated by apskalana on 2026-10-26 15:01:48 UTC (trigger commit: 73aec5babf07)
+## Test results
+
+The update and commit steps completed successfully in GitHub Actions.
+
+[View Lecture 2 workflow](https://github.com/apskalana/43030-soc-alert-lab/actions/workflows/lecture2.yml)
+
+## Workflow activity
+
+The workflow automatically adds a short entry here with the GitHub actor and triggering commit.
+

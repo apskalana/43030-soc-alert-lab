@@ -1,8 +1,22 @@
-# Lecture 3 — Custom Docker Action (Vowel Frequency)
+# Lecture 3 | Custom GitHub Action and Docker
 
-The lecture practical asks for Python vowel analysis, a shell README updater, an entrypoint and Docker.
+## Objective
 
-A custom Docker action is stored at `.github/actions/vowel-frequency-analyzer` and processes `data.txt`. It adds a report line here **during a GitHub workflow run**, then the workflow uploads the modified README as an artifact. The updated README is available as a downloadable workflow artifact.
+Create a reusable Docker-based GitHub Action to analyze text input and report vowel frequencies.
 
-## Run evidence
-Open Actions → “43030 Lecture 3 - Custom Docker Action” → chosen run → Analyze step and the uploaded output artifact. Record what actually happened.
+## Implementation
+
+| File | Purpose |
+| --- | --- |
+| `.github/actions/vowel-frequency-analyzer/action.yml` | Custom action metadata and inputs |
+| `.github/actions/vowel-frequency-analyzer/Dockerfile` | Container image |
+| `.github/actions/vowel-frequency-analyzer/frequency.py` | Python vowel-frequency analysis |
+| `.github/actions/vowel-frequency-analyzer/update_readme.sh` | Append analysis results to a report |
+| `.github/actions/vowel-frequency-analyzer/entrypoint.sh` | Run the analysis and reporting steps |
+| `data.txt` | Sample input |
+
+## Test results
+
+The custom Docker Action executed successfully and produced a downloadable report artifact in GitHub Actions.
+
+[View Lecture 3 workflow](https://github.com/apskalana/43030-soc-alert-lab/actions/workflows/lecture3.yml)

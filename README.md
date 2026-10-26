@@ -1,25 +1,46 @@
-# 43030 Professional Learning — Software Development & SOC Lab
+# 43030 | Software Development and SOC Alert Triage
 
-Student project supporting UTS 43030 **Professional Learning Report, Goal 3**, linked to Git and GitHub, CI/CD YAML workflows, Docker and security monitoring.
+A professional learning project using **Python, Git, GitHub Actions, YAML, Docker, and security event analysis**.
 
-Sample authentication events are available in `sample_logs.jsonl`.
+## Project components
 
-## Demonstrations
-- **SOC triage:** `soc_triage.py` analyses `sample_logs.jsonl`, flags repeated login failures and off-hours admin login. Six Python unit tests validate behaviour.
-- **Lecture 2 workflow:** `.github/workflows/ci.yml` validates data using a custom composite action, tests the code, then builds and runs a Docker image.
-- **Lecture 3 practical:** `.github/actions/vowel-frequency-analyzer` is a custom Docker action for `data.txt`, with `frequency.py`, `update_readme.sh` and `entrypoint.sh`.
-- **Lecture 4 practical:** `lecture4/` contains Python TaskPool code, tests, HTML report generation and a Dockerfile. `.github/workflows/lecture4.yml` runs checks.
-- **Issue / PR tracker:** GitHub Issue #1 and linked pull request provide trackable planning and version control; the tracker workflow records the merged PR.
+| Component | Implementation | Demonstration |
+| --- | --- | --- |
+| SOC alert triage | `soc_triage.py`, `sample_logs.jsonl`, `tests/` | Analyze simulated login events and identify alerts |
+| GitHub workflow automation | `lecture2/`, `.github/workflows/lecture2.yml` | Update HTML and README through a CI workflow |
+| Custom GitHub Action | `.github/actions/vowel-frequency-analyzer/` | Run a Docker-based vowel analyzer on `data.txt` |
+| Task management | `lecture4/`, `.github/workflows/lecture4.yml` | Test Python tasks and generate an HTML report |
+| Version control and issue tracking | Branches, commits, Issues, Pull Request #2 | Track development and review changes |
 
-## Running the exercises
+## Verified results
+
+- **SOC analysis:** 6 Python tests passed; 2 alerts detected in the sample authentication events.
+- **Docker:** SOC application image built and ran successfully in CI.
+- **Custom action:** Docker-based vowel analyzer executed successfully and generated a report artifact.
+- **Task manager:** 4 unit tests passed; Docker execution generated an HTML report.
+- **GitHub workflow:** HTML and README automation completed successfully.
+
+View workflow results in [GitHub Actions](https://github.com/apskalana/43030-soc-alert-lab/actions) or the [merged development pull request](https://github.com/apskalana/43030-soc-alert-lab/pull/2).
+
+## Run locally
+
+Requirements: Python 3 and Docker (for container exercises).
+
 ```bash
 python soc_triage.py sample_logs.jsonl
 python -m unittest discover -s tests -v
+
 docker build -t soc-alert-lab .
 docker run --rm soc-alert-lab
+
 docker build -f lecture4/Dockerfile -t task-manager .
 docker run --rm task-manager
 ```
 
-Open the GitHub **Actions** tab to see actual workflow results. Save direct links and screenshots in your own portfolio. See `docs/PORTFOLIO_LOG.md` for the evidence log.
+## Documentation
 
+- [Learning objectives](docs/LEARNING_OBJECTIVES.md)
+- [Portfolio evidence log](docs/PORTFOLIO_LOG.md)
+- [Lecture 2 practical](lecture2/README.md)
+- [Lecture 3 practical](lecture3/README.md)
+- [Lecture 4 practical](lecture4/README.md)
