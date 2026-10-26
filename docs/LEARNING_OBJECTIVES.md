@@ -6,4 +6,3 @@
 - **Lecture 4 — GitHub Projects:** Issue #1 and an associated PR model real task tracking. Creating an actual Projects board and running the lecture's TaskPool project remain separate tasks.
 - **Cybersecurity:** Python rule-based analysis of synthetic authentication logs. Two alerts are expected: repeated failed logins and late administrator login.
 
-For the learning report, link relevant workflow results and record which activities you personally completed and what you learned.
