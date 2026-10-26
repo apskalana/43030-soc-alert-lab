@@ -4,4 +4,4 @@ UTS 43030 learning project for Git/GitHub, GitHub Actions, custom actions, Docke
 
 **Status:** Initial repository scaffold. Development and testing are tracked in Issues and Pull Requests.
 
-All event logs are synthetic. Work is AI-assisted and should be described accurately in the learning portfolio.
+All event logs are synthetic. 
