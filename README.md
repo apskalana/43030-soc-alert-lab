@@ -12,6 +12,19 @@ A professional learning project using **Python, Git, GitHub Actions, YAML, Docke
 | Task management | `lecture4/`, `.github/workflows/lecture4.yml` | Test Python tasks and generate an HTML report |
 | Version control and issue tracking | Branches, commits, Issues, Pull Request #2 | Track development and review changes |
 
+## Alert detection rules
+
+The SOC script reads events from `sample_logs.jsonl` and applies two rules:
+
+- **Repeated login failures:** Three or more failed logins from the same source IP within ten minutes.
+- **After-hours administrator access:** A successful login by `admin` or `administrator` between 22:00 and 06:00, using the timestamp's timezone.
+
+The `--json` option prints findings in structured JSON:
+
+```bash
+python soc_triage.py sample_logs.jsonl --json
+```
+
 ## Verified results
 
 - **SOC analysis:** 6 Python tests passed; 2 alerts detected in the sample authentication events.
