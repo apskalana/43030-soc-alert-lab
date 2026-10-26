@@ -13,3 +13,5 @@ The workflow runs on pushes affecting this folder or the workflow itself, and ca
 ## Update history
 
 - Updated by apskalana on 2026-10-26 14:59:14 UTC (trigger commit: 25d765b69309)
+
+- Updated by apskalana on 2026-10-26 15:01:48 UTC (trigger commit: 73aec5babf07)
