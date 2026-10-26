@@ -2,7 +2,7 @@
 
 Student project supporting UTS 43030 **Professional Learning Report, Goal 3**, linked to Git and GitHub, CI/CD YAML workflows, Docker and security monitoring.
 
-**All input logs are synthetic.** Portfolio entries document the tested workflows, practical results and skills demonstrated.
+Sample authentication events are available in `sample_logs.jsonl`.
 
 ## Demonstrations
 - **SOC triage:** `soc_triage.py` analyses `sample_logs.jsonl`, flags repeated login failures and off-hours admin login. Six Python unit tests validate behaviour.
@@ -23,5 +23,3 @@ docker run --rm task-manager
 
 Open the GitHub **Actions** tab to see actual workflow results. Save direct links and screenshots in your own portfolio. See `docs/PORTFOLIO_LOG.md` for the evidence log.
 
-## Scope and limitations
-This is a practice project; it is **not** a production SOC or a claim that all individual Git operations and the exact full UTS lecture activities have been performed. In particular, Git merge conflicts, revert/reset/rebase, and a GitHub Projects board require separate hands-on evidence. The modules' 45-hour or 150-hour targets cannot be inferred from the GitHub history.
