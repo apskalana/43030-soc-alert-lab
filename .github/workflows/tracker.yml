@@ -1,0 +1,24 @@
+name: "43030 Issue Tracker - PR Merge"
+on:
+  pull_request:
+    types: [closed]
+permissions:
+  contents: read
+  issues: write
+jobs:
+  record-merged-pr:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record linked issue resolution
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const match = (context.payload.pull_request.body || '').match(/Closes #([0-9]+)/i);
+            if (!match) { core.info('No linked issue found'); return; }
+            const issue_number = Number(match[1]);
+            await github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number,
+              body: `Merged PR #${context.issue.number} for the 43030 learning lab. GitHub closes the linked issue when using the closing keyword in a PR merged to the default branch.`
+            });

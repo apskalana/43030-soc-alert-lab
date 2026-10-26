@@ -1,0 +1,30 @@
+name: "43030 Lecture 2 - HTML and README Automation"
+on:
+  push:
+    branches: [main, feature/soc-detection-ci]
+    paths:
+      - "lecture2/**"
+      - ".github/workflows/lecture2.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update-html-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update HTML and README from workflow
+        run: python lecture2/update.py
+      - name: Verify HTML update
+        run: grep -q "Updated by" lecture2/index.html
+      - name: Commit generated changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lecture2/index.html lecture2/README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "ci: record Lecture 2 HTML and README update"
+            git push
+          fi

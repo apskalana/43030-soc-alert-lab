@@ -1,0 +1,11 @@
+name: "Vowel frequency analyzer"
+description: "Course practical: Docker custom Action analyzes vowels and records a result"
+inputs:
+  file:
+    description: "Input file relative to repository root"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.file }}
