@@ -6,4 +6,4 @@
 - **Lecture 4 — GitHub Projects:** Issue #1 and an associated PR model real task tracking. Creating an actual Projects board and running the lecture's TaskPool project remain separate tasks.
 - **Cybersecurity:** Python rule-based analysis of synthetic authentication logs. Two alerts are expected: repeated failed logins and late administrator login.
 
-**AI assistance disclosure:** The initial project source, tests, workflow and documentation were generated with ChatGPT. For a learning report, describe what you actually reviewed, ran, debugged and learned and comply with your Canvas AI-use rules.
+For the learning report, link relevant workflow results and record which activities you personally completed and what you learned.
