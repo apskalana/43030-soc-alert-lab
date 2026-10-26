@@ -1,0 +1,48 @@
+name: "43030 SOC Alert Triage - CI"
+
+on:
+  push:
+    branches:
+      - main
+      - feature/soc-detection-ci
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Validate and unit-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reusable custom action - validate data
+        uses: ./.github/actions/validate-events
+        with:
+          file: sample_logs.jsonl
+      - name: Run six Python unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Execute synthetic triage
+        run: python soc_triage.py sample_logs.jsonl
+      - name: Verify exactly two simulated alerts
+        run: |
+          python soc_triage.py sample_logs.jsonl --json > report.json
+          python -c "import json; results=json.load(open('report.json')); assert len(results)==2, results; print('Verified two synthetic alerts')"
+  docker:
+    name: Build and run Docker
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t 43030-soc-alert-lab:ci .
+      - name: Run Docker container
+        run: docker run --rm 43030-soc-alert-lab:ci
