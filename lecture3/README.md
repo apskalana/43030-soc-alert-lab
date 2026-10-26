@@ -12,11 +12,12 @@ Create a reusable Docker-based GitHub Action to analyze text input and report vo
 | `.github/actions/vowel-frequency-analyzer/Dockerfile` | Container image |
 | `.github/actions/vowel-frequency-analyzer/frequency.py` | Python vowel-frequency analysis |
 | `.github/actions/vowel-frequency-analyzer/update_readme.sh` | Append analysis results to a report |
-| `.github/actions/vowel-frequency-analyzer/entrypoint.sh` | Run the analysis and reporting steps |
+| `.github/actions/vowel-frequency-analyzer/entrypoint.sh` | Run analysis and reporting steps |
 | `data.txt` | Sample input |
 
-## Test results
+## Test results and evidence
 
-The custom Docker Action executed successfully and produced a downloadable report artifact in GitHub Actions.
+The custom Docker Action executed successfully and generated a downloadable `lecture3-vowel-report` artifact.
 
-[View Lecture 3 workflow](https://github.com/apskalana/43030-soc-alert-lab/actions/workflows/lecture3.yml)
+- [Successful Lecture 3 run](https://github.com/apskalana/43030-soc-alert-lab/actions/runs/40345248503)
+- [Workflow overview](https://github.com/apskalana/43030-soc-alert-lab/actions/workflows/lecture3.yml)
