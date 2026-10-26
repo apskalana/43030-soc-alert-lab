@@ -1,0 +1,14 @@
+name: "Validate synthetic security events"
+description: "Local reusable composite action to validate JSON Lines security events"
+inputs:
+  file:
+    description: "Path to synthetic event file"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Run event validation
+      shell: bash
+      env:
+        EVENTS_FILE: ${{ inputs.file }}
+      run: python scripts/validate_events.py "$EVENTS_FILE"
