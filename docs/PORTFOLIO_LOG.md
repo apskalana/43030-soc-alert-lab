@@ -2,7 +2,7 @@
 
 Student: Kalana Kaveesha Abeysinghe | Student ID: 14568442
 
-**Record your real learning hours, not estimated or invented hours.** This project was scaffolded with AI assistance.
+**Record actual learning hours and evidence for each completed activity.**
 
 | Date | Time spent (actual) | Your activity | Result / lesson | Evidence link |
 | --- | --- | --- | --- | --- |
