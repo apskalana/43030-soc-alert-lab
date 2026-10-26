@@ -1,0 +1,35 @@
+name: "43030 Lecture 4 - Task Manager CI"
+on:
+  push:
+    branches: [main, feature/soc-detection-ci]
+    paths:
+      - "lecture4/**"
+      - ".github/workflows/lecture4.yml"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  task-manager:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Python task-management unit tests
+        run: python lecture4/todo-test.py
+      - name: Build the task-manager Docker image
+        run: docker build -f lecture4/Dockerfile -t 43030-task-manager .
+      - name: Run task manager and its tests in Docker
+        run: docker run --rm 43030-task-manager
+      - name: Check generated HTML inside Docker
+        run: |
+          id="$(docker create 43030-task-manager)"
+          docker start -a "$id"
+          docker cp "$id:/app/index.html" task-manager-report.html
+          docker rm "$id"
+          grep -q 'Task Manager CI report' task-manager-report.html
+      - name: Upload generated HTML evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: lecture4-task-manager-report
+          path: task-manager-report.html
