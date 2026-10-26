@@ -1,0 +1,28 @@
+name: "43030 Lecture 3 - Custom Docker Action"
+on:
+  push:
+    branches: [main, feature/soc-detection-ci]
+    paths:
+      - "data.txt"
+      - "lecture3/**"
+      - ".github/actions/vowel-frequency-analyzer/**"
+      - ".github/workflows/lecture3.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  vowel-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute custom Docker Action
+        uses: ./.github/actions/vowel-frequency-analyzer
+        with:
+          file: data.txt
+      - name: View generated report
+        run: tail -n 5 lecture3/README.md
+      - name: Upload result as learning artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lecture3-vowel-report
+          path: lecture3/README.md
