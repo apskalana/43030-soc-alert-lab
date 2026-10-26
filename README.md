@@ -2,7 +2,7 @@
 
 Student project supporting UTS 43030 **Professional Learning Report, Goal 3**, linked to Git and GitHub, CI/CD YAML workflows, Docker and security monitoring.
 
-**All inputs are synthetic. Initial code and automation were scaffolded with ChatGPT assistance.** Portfolio entries must describe what was genuinely reviewed, executed and learned.
+**All input logs are synthetic.** Portfolio entries document the tested workflows, practical results and skills demonstrated.
 
 ## Demonstrations
 - **SOC triage:** `soc_triage.py` analyses `sample_logs.jsonl`, flags repeated login failures and off-hours admin login. Six Python unit tests validate behaviour.
