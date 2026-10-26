@@ -1,0 +1,2 @@
+Security and ethical software development matters.
+Automated actions help analyse changes and support reliable testing.
